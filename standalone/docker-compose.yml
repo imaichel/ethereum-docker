@@ -2,7 +2,8 @@ version: '3'
 services:
   geth:
     build: geth
-    container_name: geth-standalone
+    image: ethereum/standalone-geth
+    container_name: standalone-geth
     command: --networkid 1234 --nodiscover --maxpeers 0 --datadir /root/.ethereum/privchain --mine --minerthreads 1 --etherbase 0x49d38ba99e0a1712388031345114d9da84110e9f --rpc --rpcaddr '0.0.0.0' --rpcport 8545 --rpccorsdomain '*' --rpcapi='admin,db,debug,eth,miner,net,personal,shh,txpool,web3' --unlock 0 --password /root/.ethereum/privchain/passwd
     ports:
       - 8545:8545
