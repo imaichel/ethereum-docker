@@ -1,7 +1,8 @@
-FROM ethereum/client-go:v1.7.2
+FROM ethereum/client-go:v1.8.6
 
 RUN apk add --update bash
 
-COPY ./.ethereum/privchain /root/.ethereum/privchain
+COPY ./.ethereum /root/.ethereum
 
-RUN geth --datadir /root/.ethereum/privchain init /root/.ethereum/privchain/genesis.json
+RUN geth account import --password /root/.ethereum/passwd /root/.ethereum/privkey
+RUN geth --datadir /root/.ethereum init /root/.ethereum/genesis.json
