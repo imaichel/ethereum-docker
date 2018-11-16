@@ -6,3 +6,4 @@ COPY ./.ethereum /root/.ethereum
 
 RUN geth account import --password /root/.ethereum/passwd /root/.ethereum/privkey
 RUN geth --datadir /root/.ethereum init /root/.ethereum/genesis.json
+VOLUME ["/root/.ethereum"]
