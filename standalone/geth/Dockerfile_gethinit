@@ -1,0 +1,9 @@
+FROM ethereum/client-go:v1.8.12
+
+RUN apk add --update bash
+
+COPY ./.ethereum /root/.ethereum
+
+RUN geth account import --password /root/.ethereum/passwd /root/.ethereum/privkey
+RUN geth --datadir /root/gethdata init /root/.ethereum/genesis.json
+VOLUME ["/tmp"]
